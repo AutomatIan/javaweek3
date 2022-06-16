@@ -1,0 +1,79 @@
+// Program 3 Quicy's Quilt Shop
+
+package edu.tridenttech.cpt167.lundgren.program3;
+
+import java.util.Scanner;
+
+public class Program3 {
+
+	public static void main(String[] args) {
+		final String FAB_NAME_A = "Solids"; 	//Contstant
+		final String FAB_NAME_B = "Prints";	//Contstant		
+		final String FAB_NAME_C = "Batiks"; 	//Contstant
+		final String QUIT = "Quit"; 					//Contstant
+		final double FAB_PRICE_A = 4.99;			//Constant
+		final double FAB_PRICE_B = 5.49; 		//Constant
+		final double FAB_PRICE_C = 5.99;			//Constant
+		final double LOCAL_TAX = .075;			//Constant
+		String userName;									//Name of user
+		String fabName;
+		double numYards;
+		double fabPrice;
+		double subtotal;
+		double totalPrice;
+		double priceOfYards;
+		char menuSelection;
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println ("Welcome to Quincy's; may I ask your name?");
+		userName = input.nextLine();
+		
+		System.out.printf( " %s) %4s %20.2f\n","A", FAB_NAME_A, FAB_PRICE_A);
+		System.out.printf( " %s) %4s %20.2f\n","B", FAB_NAME_B, FAB_PRICE_B);
+		System.out.printf( " %s) %4s %20.2f\n","C", FAB_NAME_C, FAB_PRICE_C);
+		System.out.printf( " %s) %4s \n", "Q", QUIT);
+		
+		System.out.print ("Please make a selection:");
+		menuSelection = input.nextLine().charAt(0);
+		System.out.println ("How many yards would you like?");
+		numYards = input.nextDouble();
+		
+		if(menuSelection == 'A') {
+			fabName = FAB_NAME_A;
+			fabPrice = FAB_PRICE_A;
+		} else if (menuSelection == 'B') {
+			fabName = FAB_NAME_B;
+			fabPrice = FAB_PRICE_B;
+		}else if (menuSelection == 'C') {
+			fabName = FAB_NAME_C;
+			fabPrice = FAB_PRICE_C;
+		} else  System.out.println("invalid entry");
+		
+			// Process
+		priceOfYards= fabPrice *numYards;
+		
+		if(priceOfYards >= 200) {
+			subtotal = priceOfYards * .9;
+		}else if (priceOfYards >=100) {
+			subtotal = priceOfYards -15;
+		}else if (priceOfYards >= 50) {
+			subtotal = priceOfYards -5;
+		}else subtotal = priceOfYards;
+	
+	//Output
+		System.out.println ("Summary");
+		System.out.printf ("%s %10s \n, Fabric, fabName");
+		System.out.printf ("%s %26d\n Yards: , numYards");
+		System.out.printf ("%s %26d\n Price/Yard: , fabPrice");
+		System.out.printf ("%s %26d\n Price: , priceOfYards");
+		System.out.printf ("%s %26d\n Discount: , priceOfYards - subtotal");
+		System.out.printf ("%s %26d\n Subtotal: , subtotal");
+		System.out.printf ("%s %26d\n Tax: , subtotal * localTax");
+		System.out.printf ("%s %26d\n Total: , subtotal + localTax");
+		
+		System.out.println( userName+", Thank you for Shopping at Quincy's");
+}
+}
+
+		
